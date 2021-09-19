@@ -11,26 +11,26 @@
                         Digite o e-mail cadastrado para receber o código de verificação
                     </div>
                     <input type="email" v-model="email" class="login-input step-1" placeholder="E-mail" v-if="step==1" />
-                    <span class="error" v-if="(!$v.email.required || !$v.email.email) && $v.email.$dirty && $v.step==1">Informe um e-mail válido</span>
+                    <span class="error" v-if="(!$v.email.required || !$v.email.email) && $v.email.$dirty && step==1">Informe um e-mail válido</span>
 
                     <div class="text step-2" v-if="step==2">
                         Digite o código recebido no e-mail
                     </div>
                     <input type="number" v-model="codigo" class="login-input step-2" placeholder="Código" pattern="\d*" v-if="step==2" />
-                    <span class="error" v-if="(!$v.codigo.minLength || !$v.codigo.maxLength) && $v.codigo.$dirty && $v.step==2">Código inválido</span>
+                    <span class="error" v-if="(!$v.codigo.minLength || !$v.codigo.maxLength) && $v.codigo.$dirty && step2==2">Código inválido</span>
 
                     <input type="password" v-model="senha" class="login-input step-3" placeholder="Nova senha" v-if="step==3" />
-                    <span class="error" v-if="!$v.senha.required && $v.senha.$dirty && !$v.step==3">Informe a senha</span>
-                    <span class="error" v-if="(!$v.senha.minLength || !$v.senha.maxLength) && $v.senha.$dirty && !$v.step==3">Senha deve ter entre {{ $v.senha.$params.minLength.min }} e {{ $v.senha.$params.maxLength.max }} caracteres</span>
+                    <span class="error" v-if="!$v.senha.required && $v.senha.$dirty && step2==3">Informe a senha</span>
+                    <span class="error" v-if="(!$v.senha.minLength || !$v.senha.maxLength) && $v.senha.$dirty && step2==3">Senha deve ter entre {{ $v.senha.$params.minLength.min }} e {{ $v.senha.$params.maxLength.max }} caracteres</span>
                     <input type="password" v-model="novaSenha" class="login-input step-3" placeholder="Confirmar senha" v-if="step==3" />
-                    <span class="error" v-if="!$v.novaSenha.required && $v.novaSenha.$dirty && !$v.step==3">Confirme a senha</span>
+                    <span class="error" v-if="(!$v.novaSenha.sameAsPassword) && $v.novaSenha.$dirty && step2==3">As senhas não são iguais</span>
 
                     <button type="submit" class="login-button" v-if="step!=3" v-on:click="nextStep" >
                         Enviar
                     </button>
-                    <button type="button" class="login-button" v-if="step==3">
+                    <button type="submit" class="login-button" v-if="step==3" v-on:click="nextStep">
                         <!-- <a href="/">Redefinir</a> -->
-                        
+                        Redefinir
                     </button>
                 </form>
             </div>
@@ -40,13 +40,16 @@
 
 <script>
 
-import { required, minLength, maxLength, email } from 'vuelidate/lib/validators';
+import { required, minLength, maxLength, email, sameAs } from 'vuelidate/lib/validators';
+import router from '@/routes/router.js';
 
 export default {
     name: 'Senha',
+    router,
     data(){
         return {
             step: 1,
+            step2: 0,
             email: '',
             codigo: '',
             senha: '',
@@ -70,28 +73,34 @@ export default {
         },
         novaSenha: {
             required,
-            minLength: minLength(6),
-            maxLength: maxLength(12)
+            sameAsPassword: sameAs('senha')
         }
     },
     methods: {
         nextStep: function(){
             if(this.$v.email.required && this.$v.email.email && this.step == 1){
                 this.step = this.step + 1;
-                console.log("caiu no 1")
-            } else if(this.$v.codigo.required && this.$v.codigo.minLength && this.$v.codigo.maxLength && this.step == 2) {
-                this.step = this.step + 1;
-                console.log("caiu no 2")
-            }else {
-                console.log(this.step)
+            } else if(this.step == 2){
+                if(this.$v.codigo.required && this.$v.codigo.minLength && this.$v.codigo.maxLength && this.step == 2) {
+                    this.step = this.step + 1;
+                } else {
+                    this.step2 = 2;
+                }
+            }else if(this.step == 3) {
+                if(this.$v.senha.required && this.$v.novaSenha.sameAsPassword && this.$v.senha.maxLength && this.$v.senha.minLength && this.step == 3) {
+                    console.log("caiu no 3");
+                }else {
+                    this.step2 = 3;
+                }
             }
         },
         submitForm(){
             this.$v.$touch();
 
             if(!this.$v.$invalid && this.step == 3){
-                // console.log(`Email: ${this.email}, Senha: ${this.senha}`);
-                console.log("caiu no 3")
+                console.log("foi");
+                router.push('/');
+
             }
         }
     }

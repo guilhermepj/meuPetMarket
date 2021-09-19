@@ -4,32 +4,52 @@
             <div class="mid-container dog-background">
             </div>
             <div class="mid-container login-container">
-                <form class="form-container">
+                <form class="form-container" @submit.prevent="submitForm">
                     <p class="login-title">Cadastro</p>
                 
-                    <input type="text" class="login-input step-1" placeholder="E-mail" v-if="step==1" />
-                    <input type="password" class="login-input step-1" placeholder="Senha" v-if="step==1" />
-                    <input type="password" class="login-input step-1" placeholder="Confirmar senha" v-if="step==1" />
+                    <input type="text" v-model="email" class="login-input step-1" placeholder="E-mail" v-if="step==1" />
+                    <span class="error" v-if="(!$v.email.required || !$v.email.email) && $v.email.$dirty && step==1">Informe um e-mail válido</span>
+                    <input type="password" v-model="senha" class="login-input step-1" placeholder="Senha" v-if="step==1" />
+                    <span class="error" v-if="!$v.senha.required && $v.senha.$dirty && step==1">Informe a senha</span>
+                    <span class="error" v-if="(!$v.senha.minLength || !$v.senha.maxLength) && $v.senha.$dirty && step==1">Senha deve ter entre {{ $v.senha.$params.minLength.min }} e {{ $v.senha.$params.maxLength.max }} caracteres</span>
+                    <input type="password" v-model="confirmarSenha" class="login-input step-1" placeholder="Confirmar senha" v-if="step==1" />
+                    <span class="error" v-if="(!$v.confirmarSenha.sameAsPassword) && $v.confirmarSenha.$dirty && step==1">As senhas não são iguais</span>
 
-                    <input type="text" class="login-input step-2" placeholder="Nome" v-if="step==2" />
-                    <input type="number" class="login-input step-2" placeholder="Telefone" v-if="step==2" />
-                    <input type="text" class="login-input step-2" placeholder="CPF" v-if="step==2" />
+                    <input type="text" v-model="nome" class="login-input step-2" placeholder="Nome" v-if="step==2" />
+                    <span class="error" v-if="!$v.nome.required && $v.nome.$dirty && step2==2">Informe o nome</span>
+                    <span class="error" v-if="(!$v.nome.minLength) && $v.nome.$dirty && step2==2">Nome deve ter pelo menos {{ $v.nome.$params.minLength.min }} caracteres</span>
+                    <input type="number" v-model="telefone" class="login-input step-2" placeholder="Telefone" v-if="step==2" />
+                    <span class="error" v-if="!$v.telefone.required && $v.telefone.$dirty && step2==2">Informe o telefone</span>
+                    <input type="text" v-model="cpf" class="login-input step-2" placeholder="CPF" v-if="step==2" />
+                    <span class="error" v-if="!$v.cpf.required && $v.cpf.$dirty && step2==2">Informe o CPF</span>
+                    <span class="error" v-if="(!$v.cpf.minLength || !$v.cpf.maxLength) && $v.senha.$dirty && step2==2">CPF inválido!</span>
 
-                    <input type="text" class="login-input step-3" placeholder="CEP" v-if="step==3" />
+                    <input type="text" v-model="cep" class="login-input step-3" placeholder="CEP" v-if="step==3" />
+                    <span class="error" v-if="!$v.cep.required && $v.cep.$dirty && step2==3">Informe o CEP</span>
+                    <span class="error" v-if="(!$v.cep.minLength) && $v.cep.$dirty && step2==3">CEP deve ter pelo menos {{ $v.cep.$params.minLength.min }} caracteres</span>
                     <div class="inputs-container-row" v-if="step==3">
-                        <input type="text" class="login-input step-3 input-row-1" placeholder="Rua" />
-                        <input type="number" class="login-input step-3 input-row-2" placeholder="Nº" />
+                        <input type="text" v-model="rua" class="login-input step-3 input-row-1" placeholder="Rua" />
+                        <input type="number" v-model="numero" class="login-input step-3 input-row-2" placeholder="Nº" />
                     </div>
-                    <input type="text" class="login-input step-3" placeholder="Bairro" v-if="step==3" />
                     <div class="inputs-container-row" v-if="step==3">
-                        <input type="text" class="login-input step-3 input-row-1" placeholder="Cidade" />
-                        <input type="text" class="login-input step-3 input-row-2" placeholder="Estado" />
+                        <span class="error" v-if="!$v.rua.required && $v.rua.$dirty && step2==3">Informe a rua</span>
+                        <span class="error" v-if="!$v.numero.required && $v.numero.$dirty && step2==3">Informe o número</span>
+                    </div>
+                    <input type="text" v-model="bairro" class="login-input step-3" placeholder="Bairro" v-if="step==3" />
+                    <span class="error" v-if="!$v.bairro.required && $v.bairro.$dirty && step2==3">Informe o bairro</span>
+                    <div class="inputs-container-row" v-if="step==3">
+                        <input type="text" v-model="cidade" class="login-input step-3 input-row-1" placeholder="Cidade" />
+                        <input type="text" v-model="estado" class="login-input step-3 input-row-2" placeholder="Estado" />
+                    </div>
+                    <div class="inputs-container-row" v-if="step==3">
+                        <span class="error" v-if="!$v.cidade.required && $v.cidade.$dirty && step2==3">Informe a cidade</span>
+                        <span class="error" v-if="!$v.estado.required && $v.estado.$dirty && step2==3">Informe o estado</span>
                     </div>
 
-                    <button type="button" class="login-button" v-if="step!=3" v-on:click="nextStep">
+                    <button type="submit" class="login-button" v-if="step!=3" v-on:click="nextStep">
                         Próximo
                     </button>
-                    <button type="button" class="login-button" v-if="step==3" >
+                    <button type="button" class="login-button" v-if="step==3" v-on:click="nextStep">
                         Cadastrar
                     </button>
 
@@ -40,16 +60,109 @@
 </template>
 
 <script>
+
+import { required, minLength, maxLength, email, sameAs } from 'vuelidate/lib/validators';
+import router from '@/routes/router.js';
+
 export default {
     name: 'Cadastro',
+    router,
     data(){
         return {
-            step: 1
+            step: 1,
+            step2: 0,
+            email: '',
+            senha: '',
+            confirmarSenha: '',
+            nome: '',
+            telefone: '',
+            cpf: '',
+            cep: '',
+            rua: '',
+            numero: '',
+            bairro: '',
+            cidade: '',
+            estado: '',
+        }
+    },
+    validations: {
+        email: {
+            required,
+            email
+        },
+        senha: {
+            required,
+            minLength: minLength(6),
+            maxLength: maxLength(12)
+        },
+        confirmarSenha: {
+            required,
+            sameAsPassword: sameAs('senha')
+        },
+        nome: {
+            required,
+            minLength: minLength(3)
+        },
+        telefone: {
+            required
+        },
+        cpf: {
+            required,
+            minLength: minLength(11),
+            maxLength: maxLength(11)
+        },
+        cep: {
+            required,
+            minLength: minLength(8)
+        },
+        rua: {
+            required
+        },
+        numero: {
+            required
+        },
+        bairro: {
+            required
+        },
+        cidade: {
+            required
+        },
+        estado: {
+            required
         }
     },
     methods: {
         nextStep: function(){
-            this.step = this.step + 1;
+            if(this.$v.email.required && this.$v.email.email && 
+            this.$v.senha.required && this.$v.senha.minLength && this.$v.senha.maxLength &&
+            this.$v.confirmarSenha.sameAsPassword && this.step == 1){
+                this.step = this.step + 1;
+            } else if(this.step == 2){
+                if(this.$v.nome.required && this.$v.nome.minLength &&
+                this.$v.telefone.required &&
+                this.$v.cpf.required && this.$v.cpf.minLength && this.$v.cpf.maxLength){
+                    this.step = this.step + 1;
+                } else{
+                    this.step2 = 2;
+                }
+            } else if(this.step == 3){
+                if(this.$v.cep.required && this.$v.cep.minLength &&
+                this.$v.rua.required && this.$v.numero.required && this.$v.bairro.required && 
+                this.$v.cidade.required && this.$v.estado.required){
+                    this.submitForm();
+                } else{
+                    this.step2 = 3;
+                }
+            }
+        },
+        submitForm(){
+            this.$v.$touch();
+
+            if(!this.$v.$invalid && this.step == 3){
+                console.log("foi");
+                router.push('/');
+
+            }
         }
     }
 }
@@ -200,6 +313,22 @@ button:active{
 
 .input-row-2{
     width: 25%;
+}
+
+.error{
+    font-size: 11px;
+    color: red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 </style>
