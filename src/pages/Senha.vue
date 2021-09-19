@@ -32,6 +32,9 @@
                         <!-- <a href="/">Redefinir</a> -->
                         Redefinir
                     </button>
+                    <div class="link-container">
+                        <a @click="$router.go(-1)" class="login-link">Voltar</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -240,10 +243,16 @@ button:active{
     margin-bottom: 8px;
     transition: 0.2s color;
     cursor: pointer;
+    color: #00000090 !important;
+    text-decoration: none;
 }
 
 .login-link:hover{
-    color: #000000bb;
+    color: #000000bb !important;
+}
+
+.login-link:visited{
+    color: #00000090 !important;
 }
 
 .step-1{
