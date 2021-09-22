@@ -28,9 +28,11 @@
 <script>
  
 import { required, minLength, maxLength, email } from 'vuelidate/lib/validators';
+import router from '@/routes/router.js';
 
 export default {
     name: 'Login',
+    router,
     data(){
         return {
             email: '',
@@ -53,7 +55,7 @@ export default {
             this.$v.$touch();
 
             if(!this.$v.$invalid){
-                console.log(`Email: ${this.email}, Senha: ${this.senha}`);
+                router.push('/');
             }
         }
     }

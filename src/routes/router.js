@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
+import Index from '@/pages/Index';
 import Login from '@/pages/Login';
 import Cadastro from '@/pages/Cadastro';
 import Senha from '@/pages/Senha';
@@ -10,6 +11,10 @@ import Senha from '@/pages/Senha';
 const routes = [
     {
         path:'/',
+        component: Index
+    },
+    {
+        path:'/login',
         component: Login
     },
     {
