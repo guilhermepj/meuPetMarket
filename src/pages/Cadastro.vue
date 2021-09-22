@@ -100,7 +100,7 @@ export default {
         },
         senha: {
             required,
-            minLength: minLength(6),
+            minLength: minLength(8),
             maxLength: maxLength(12)
         },
         confirmarSenha: {
