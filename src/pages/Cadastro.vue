@@ -39,8 +39,10 @@
                     <span class="error" v-if="!$v.bairro.required && $v.bairro.$dirty && step2==3">Informe o bairro</span>
                     <div class="inputs-container-row" v-if="step==3">
                         <input type="text" v-model="cidade" class="login-input step-3 input-row-1" placeholder="Cidade" ref="city" />
-                        <input type="text" v-model="estado" class="login-input step-3 input-row-2" placeholder="Estado" ref="province" />
+                        <!-- <input type="text" v-model="estado" class="login-input step-3 input-row-2" placeholder="Estado" ref="province" /> -->
+                        <v-select :options="options"></v-select>
                     </div>
+                    
                     <div class="inputs-container-row" v-if="step==3">
                         <span class="error" v-if="!$v.cidade.required && $v.cidade.$dirty && step2==3">Informe a cidade</span>
                         <span class="error" v-if="!$v.estado.required && $v.estado.$dirty && step2==3">Informe o estado</span>
@@ -64,20 +66,48 @@
 
 <script>
 
+import Vue from 'vue'
 import { required, minLength, maxLength, email, sameAs } from 'vuelidate/lib/validators';
 import router from '@/routes/router.js';
 import AuthenticationService from '../../src/services/authentication/authenticationService';
 import AddressRequest  from '../../src/services/authentication/requests/addressRequest';
 import RegisterUserRequest from '../../src/services/authentication/requests/addressRequest';
+import StateService from '../services/stateService';
+import vSelect from 'vue-select';
+import "vue-select/dist/vue-select.css";
+
+Vue.component('v-select', vSelect)
 
 let request = new RegisterUserRequest();
+
+const stateService = new StateService();
+            stateService.getState()
+            .then(response => {
+                // console.log(response.data);
+                let json = JSON.stringify(response.data);
+                let state = JSON.parse(json);
+                // console.log(json)
+                // console.log(response.data)
+                console.log(state.states)
+                // console.log(this.options)
+
+                state.states.forEach((value, index) => {
+                    // this.options[index] = value.nome
+                    console.log(value.nome)
+                    // console.log(index)
+                    console.log(index)
+                });
+
+                console.log(this.options)
+
+            }).catch((error) => {console.log(error);});
 
 export default {
     name: 'Cadastro',
     router,
     data(){
         return {
-            step: 1,
+            step: 3,
             step2: 0,
             email: '',
             senha: '',
@@ -91,6 +121,7 @@ export default {
             bairro: '',
             cidade: '',
             estado: '',
+            options: []
         }
     },
     validations: {
@@ -147,6 +178,9 @@ export default {
                 request.email = this.$refs.email.value;
                 request.senha = this.$refs.confirmPassword.value;
                 this.step = this.step + 1;
+
+                
+
             } else if(this.step == 2){
                 if(this.$v.nome.required && this.$v.nome.minLength &&
                 this.$v.telefone.required &&
@@ -159,9 +193,15 @@ export default {
                     this.step2 = 2;
                 }
             } else if(this.step == 3){
+
+                
+
                 if(this.$v.cep.required && this.$v.cep.minLength &&
                 this.$v.rua.required && this.$v.numero.required && this.$v.bairro.required && 
                 this.$v.cidade.required && this.$v.estado.required) {
+
+                
+
                     request.endereco = new AddressRequest(this.$refs.street.value,
                                                         this.$refs.district.value,
                                                         this.$refs.city.value,
