@@ -39,8 +39,7 @@
                     <span class="error" v-if="!$v.bairro.required && $v.bairro.$dirty && step2==3">Informe o bairro</span>
                     <div class="inputs-container-row" v-if="step==3">
                         <input type="text" v-model="cidade" class="login-input step-3 input-row-1" placeholder="Cidade" ref="city" />
-                        <!-- <input type="text" v-model="estado" class="login-input step-3 input-row-2" placeholder="Estado" ref="province" /> -->
-                        <v-select :options="options"></v-select>
+                        <v-select v-model="estado" :options="options.estado" :key="index" ref="province"></v-select>
                     </div>
                     
                     <div class="inputs-container-row" v-if="step==3">
@@ -80,34 +79,12 @@ Vue.component('v-select', vSelect)
 
 let request = new RegisterUserRequest();
 
-const stateService = new StateService();
-            stateService.getState()
-            .then(response => {
-                // console.log(response.data);
-                let json = JSON.stringify(response.data);
-                let state = JSON.parse(json);
-                // console.log(json)
-                // console.log(response.data)
-                console.log(state.states)
-                // console.log(this.options)
-
-                state.states.forEach((value, index) => {
-                    // this.options[index] = value.nome
-                    console.log(value.nome)
-                    // console.log(index)
-                    console.log(index)
-                });
-
-                console.log(this.options)
-
-            }).catch((error) => {console.log(error);});
-
 export default {
     name: 'Cadastro',
     router,
     data(){
         return {
-            step: 3,
+            step: 1,
             step2: 0,
             email: '',
             senha: '',
@@ -121,7 +98,10 @@ export default {
             bairro: '',
             cidade: '',
             estado: '',
-            options: []
+            options: {
+                estado: [],
+                estadoId: []
+            }
         }
     },
     validations: {
@@ -179,7 +159,32 @@ export default {
                 request.senha = this.$refs.confirmPassword.value;
                 this.step = this.step + 1;
 
-                
+                const stateService = new StateService();
+
+                stateService.getState()
+                .then(response => {
+                    // console.log(response.data);
+                    let json = JSON.stringify(response.data);
+                    let state = JSON.parse(json);
+                    // console.log(json)
+                    // console.log(response.data)
+                    // console.log(state.states)
+                    // console.log(this.options)
+
+                    state.states.forEach((value, index) => {
+                        this.options.estado[index] = value.nome;
+                        this.options.estadoId[index] = value.idEstado;
+                        // console.log(value)
+                        // this.optionsId[index] = value.id;
+                        // console.log(value.nome)
+                        // console.log(index)
+                        // console.log(index)
+                    });
+
+                    console.log(this.options.estado)
+                    
+
+                }).catch((error) => {console.log(error);});
 
             } else if(this.step == 2){
                 if(this.$v.nome.required && this.$v.nome.minLength &&
@@ -194,7 +199,22 @@ export default {
                 }
             } else if(this.step == 3){
 
-                
+                let indice = 0
+
+                this.options.estado.forEach((value, index) => {
+                    if(this.$refs.province.value == value){
+                        indice = this.options.estadoId[index];
+                    }
+                        // this.options.estado[index] = value.nome;
+                        // this.options.estadoId[index] = value.idEstado;
+                        // console.log(value)
+                        // this.optionsId[index] = value.id;
+                        // console.log(value.nome)
+                        // console.log(index)
+                        // console.log(index)
+                    });
+
+                    console.log(indice)
 
                 if(this.$v.cep.required && this.$v.cep.minLength &&
                 this.$v.rua.required && this.$v.numero.required && this.$v.bairro.required && 
@@ -206,7 +226,7 @@ export default {
                                                         this.$refs.district.value,
                                                         this.$refs.city.value,
                                                         parseInt(this.$refs.zipcode.value),
-                                                        parseInt(this.$refs.province.value),
+                                                        indice,
                                                         this.$refs.number.value);
                     const authService = new AuthenticationService(); 
                     authService.registerUser(request)
@@ -229,6 +249,7 @@ export default {
                 router.push('/');
             }
         }
+        
     }
 }
 </script>
