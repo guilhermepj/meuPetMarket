@@ -7,9 +7,9 @@
                 <form class="form-container" @submit.prevent="submitForm">
                     <p class="login-title">Login</p>
                 
-                    <input type="email" v-model="email" class="login-input" placeholder="E-mail"/>
+                    <input type="email" v-model="email" class="login-input" placeholder="E-mail" ref="email"/>
                     <span class="error" v-if="(!$v.email.required || !$v.email.email) && $v.email.$dirty">Informe um e-mail válido</span>
-                    <input type="password" v-model="senha" class="login-input" placeholder="Senha" />
+                    <input type="password" v-model="senha" class="login-input" placeholder="Senha" ref="password"/>
                     <span class="error" v-if="!$v.senha.required && $v.senha.$dirty">Informe a senha</span>
                     <span class="error" v-if="(!$v.senha.minLength || !$v.senha.maxLength) && $v.senha.$dirty">Senha deve ter entre {{ $v.senha.$params.minLength.min }} e {{ $v.senha.$params.maxLength.max }} caracteres</span>
                     <button type="submit" class="login-button">
@@ -29,6 +29,10 @@
  
 import { required, minLength, maxLength, email } from 'vuelidate/lib/validators';
 import router from '@/routes/router.js';
+import AuthenticationService from '../../src/services/authentication/authenticationService';
+import SigninUserRequest from '../../src/services/authentication/requests/signinUserRequest';
+
+let request = new SigninUserRequest();
 
 export default {
     name: 'Login',
@@ -53,9 +57,25 @@ export default {
     methods: {
         submitForm(){
             this.$v.$touch();
+            
 
             if(!this.$v.$invalid){
+
+            request.email = this.$refs.email.value;
+            request.senha = this.$refs.password.value;
+
+            console.log(request.email)
+
+            const authService = new AuthenticationService(); 
+            authService.signinUser(request)
+            .then(() => {
                 router.push('/');
+            })
+            .catch(() => {
+                alert("Dados inválidos.");
+            });
+
+                
             }
         }
     }
