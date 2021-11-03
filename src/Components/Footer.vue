@@ -1,7 +1,7 @@
 <template>
     <div>
-        <footer class="fixed-bootom">
-			<p align="center" >Fim da página</p>
+        <footer class=" footer navbar fixed-bottom">
+			<p align="center" >Todos os direitos reservados</p>
 		</footer>
     </div>
 
@@ -15,10 +15,15 @@ export default {
 
 <style scoped>
     footer{
-        height: 75px;
         background-color: #80624C;
         margin-bottom: 0;
         border-radius: 50px 50px 0px 0px;
         margin-top: 10px;
+
+    }
+    p{
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
     }
 </style>

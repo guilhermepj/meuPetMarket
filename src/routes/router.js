@@ -7,6 +7,9 @@ import Index from '@/pages/Index';
 import Login from '@/pages/Login';
 import Cadastro from '@/pages/Cadastro';
 import Senha from '@/pages/Senha';
+import MeusProdutos from '@/pages/MeusProdutos';
+import NovosAnuncios from '@/pages/NovosAnuncios';
+import SucessoAnuncio from '@/pages/SucessoAnuncio';
 
 const routes = [
     {
@@ -24,6 +27,18 @@ const routes = [
     {
         path:'/Senha',
         component: Senha
+    },
+    {
+        path:'/MeusProdutos',
+        component: MeusProdutos
+    },
+    {
+        path:'/NovosAnuncios',
+        component: NovosAnuncios
+    },
+    {
+        path:'/SucessoAnuncio',
+        component: SucessoAnuncio
     }
 ];
 

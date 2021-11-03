@@ -8,7 +8,7 @@
                 <div class=" col-md 3"></div>
                 <carousel class="col-md 6" @prox="prox" @ant="ant">
                     <carousel-slide v-for="(slide, index) in slides" :key="slide" :index="index" :visibleSlide = "visibleSlide">
-                        <img :src="slide" />
+                        <img :src="slide" class="img-fluid" />
                     </carousel-slide>
                 </carousel>
                 <div class=" col-md 3"></div>
@@ -147,13 +147,18 @@ export default {
 <style>
 .fundo{
 	background-color: #FFF;
-    border-radius: 0px 0px 25px 25px;
+    border-radius: 25px 25px 25px 25px;
     text-align: center;
+    margin: 5%;
+    padding: 5%;
 }
 
 .container{
     width: 80%;
 }
+</style>
+<style scoped>
+
 .carousel-centro{
     width: 100px;
 }
