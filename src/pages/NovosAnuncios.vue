@@ -251,7 +251,7 @@
                         <input type="text" v-model="anuncio.valor" class="anuncio-input info" placeholder="Valor unitário" />
                     </div>
                     <div class="col-md-6">
-                       <img src:"previewImage" class="img-fluid uploading-image"/>
+                       <!-- <img src:"previewImage" class="img-fluid uploading-image"/> -->
                        <input type="file" accept="image/jpeg" @change="uploadImage">
                     </div>
                 </div>
