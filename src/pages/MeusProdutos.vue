@@ -24,23 +24,22 @@
                 <p>{{anuncio.nome}}</p>
                 <div class="row fundoAnuncio">
                     <div class="col-md-3 listaimg" >
-                        <!-- <img src="./../assets/login-dog.jpg" class="img-fluid"/> -->
-                        <img :src="this.imageRequest.getImage(anuncio.imagem)" class="img-fluid"/>
+                        <img src="./../assets/login-dog.jpg" class="img-fluid"/>
+                        <!-- <img :src="this.imageRequest.getImage(anuncio.imagem)" class="img-fluid"/> -->
                     </div>
                     <div class="col-md-4">
                         <h4>{{anuncio.nome}}</h4>
                     </div>
                     <div class="col-md-2">
-                        <p> disponível:</p>
+                        <p> Quantidade:</p>
                         <p>Valor unitário:</p>
-                        <button type="button" class="btn btn-danger" @click="remover(anuncio)">
-                            Excluir Anuncio
+                        <button type="button" class="btn btn-danger" v-on:click="apagar(anuncio.idProduto)">
+                            Delete
                         </button>
                     </div>
-
-                    <div class="col-md-3">
-                        <p>{{anuncio.quantidade}}</p>
-                        <p>{{anuncio.preco}} </p>
+                    <div class='col-md-2'>
+                        <p>{{anuncio.quantidade}} </p>
+                        <p>{{anuncio.preco}}</p>
                         <button type="button" class="btn btn-primary">
                             Ir para Anuncio
                         </button>
@@ -60,11 +59,14 @@ import Cabecalho from './../Components/Cabecalho.vue';
 import Footer from './../Components/Footer.vue';
 import router from '@/routes/router.js';
 import ProdutoService from '../services/produtoService';
-import ImageRequest from '../services/anuncios/imageRequest';
+import CriarProduto from '../services/authentication/criarProduto';
+//import ProdutoObjeto from '../services/authentication/requests/produtoObjeto';
+//import ImageRequest from '../services/anuncios/imageRequest';
 
 const produtoService = new ProdutoService();
-const imageRequest = new ImageRequest();
-            
+//const imageRequest = new ImageRequest();
+
+//let request = new ProdutoObjeto();
 
 export default {
     name:'MeusProdutos',
@@ -110,7 +112,7 @@ export default {
 
             }).catch((error) => {console.log(error);});
         return{
-            image: ImageRequest.getImage(),
+            //image: ImageRequest.getImage(),
             anuncios: [{idProduto: 0, nome: 'shampoo', descricao: 'a', quantidade: 20, preco: 50.00, imagem: 'a'}]
             
             //anuncios:[{nome: 'shampoo', quantidade: 20, valor: 50.00},{nome: 'casa dog', quantidade: 5, valor: 500.00},{nome: 'casa dog', quantidade: 5, valor: 500.00},{nome: 'casa dog', quantidade: 5, valor: 500.00}]
@@ -127,14 +129,21 @@ export default {
             console.log(resposta)
             this.anuncios = resposta.data
         })
-        /*remover(anuncio){
+        remover(anuncio){
             Anuncio.apagar(anuncio).then(resposta =>{
-                this.listar();
             }).catch(e =>{
-                
             })
         }*/
 
+    },
+
+    methods:{
+        apagar(idProduto){
+            const del = new CriarProduto();
+            del.delete(idProduto);
+            window.location.reload();
+            //console.log(idProduto);
+        }
     },
 
 

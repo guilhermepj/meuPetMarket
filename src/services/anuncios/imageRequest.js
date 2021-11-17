@@ -1,4 +1,4 @@
-import api from './api';
+/*import api from './api';
 
 class ImageRequest { 
     getImage(image) {
@@ -6,4 +6,4 @@ class ImageRequest {
     }
 }
 
-export default ImageRequest
+export default ImageRequest*/

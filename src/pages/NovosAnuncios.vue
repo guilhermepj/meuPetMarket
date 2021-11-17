@@ -57,46 +57,47 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Buldogue francês</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="1" checked>
+                        <label class="form-check-label" for="raca"> Buldogue francês</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Golden retriever </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="2">
+                        <label class="form-check-label" for="raca">Golden retriever </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Labrador</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="3">
+                        <label class="form-check-label" for="raca"> Labrador</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Lhasa apso </label>
+                        <input v-model='anuncio.tipo'
+                         class="form-check-input" type="radio" name="raca" id="raca" value="4">
+                        <label class="form-check-label" for="raca">Lhasa apso </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Maltês </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="5">
+                        <label class="form-check-label" for="raca">Maltês </label>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Pinscher</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="6">
+                        <label class="form-check-label" for="raca"> Pinscher</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Poodle</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="7">
+                        <label class="form-check-label" for="raca">Poodle</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Shih tzu </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="8">
+                        <label class="form-check-label" for="raca"> Shih tzu </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Yorkshire</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="9">
+                        <label class="form-check-label" for="raca">Yorkshire</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Outras raças de Cachorro</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="10">
+                        <label class="form-check-label" for="raca">Outras raças de Cachorro</label>
                     </div> 
                 </div>
             
@@ -106,46 +107,46 @@
             
                 <div class="col-md-3">
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Persa</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="11">
+                        <label class="form-check-label" for="raca"> Persa</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Siamês </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="12">
+                        <label class="form-check-label" for="raca">Siamês </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Himalaia</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="13">
+                        <label class="form-check-label" for="raca"> Himalaia</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Maine Coon </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="14">
+                        <label class="form-check-label" for="raca">Maine Coon </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Angorá </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="15">
+                        <label class="form-check-label" for="raca">Angorá </label>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-check titulo">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Sphynx</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="ino" id="raca" value="16">
+                        <label class="form-check-label" for="raca"> Sphynx</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Ragdoll</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="17">
+                        <label class="form-check-label" for="raca">Ragdoll</label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                        <label class="form-check-label" for="exampleRadios1"> Ashera </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="18">
+                        <label class="form-check-label" for="raca"> Ashera </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">American Shorthair </label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="19">
+                        <label class="form-check-label" for="raca">American Shorthair </label>
                     </div>
                     <div class="form-check espacamento">
-                        <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                        <label class="form-check-label" for="exampleRadios2">Outras raças de gato</label>
+                        <input v-model='anuncio.tipo' class="form-check-input" type="radio" name="raca" id="raca" value="20">
+                        <label class="form-check-label" for="raca">Outras raças de gato</label>
                     </div>
                 </div>
             </div>
@@ -175,46 +176,46 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                    <label class="form-check-label" for="exampleRadios1"> Ração</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="21">
+                    <label class="form-check-label" for="raca"> Ração</label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                    <label class="form-check-label" for="exampleRadios2">Ossinhos e Petisco </label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="22">
+                    <label class="form-check-label" for="raca">Ossinhos e Petisco </label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                    <label class="form-check-label" for="exampleRadios1"> Higiene</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="23">
+                    <label class="form-check-label" for="raca"> Higiene</label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                    <label class="form-check-label" for="exampleRadios2">Brinquedos </label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="24">
+                    <label class="form-check-label" for="raca">Brinquedos </label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                    <label class="form-check-label" for="exampleRadios2">Caminhas </label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="25">
+                    <label class="form-check-label" for="raca">Caminhas </label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                    <label class="form-check-label" for="exampleRadios1"> Adestramento</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="26">
+                    <label class="form-check-label" for="raca"> Adestramento</label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                    <label class="form-check-label" for="exampleRadios2">Poodle</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="27">
+                    <label class="form-check-label" for="raca">Poodle</label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao1" checked>
-                    <label class="form-check-label" for="exampleRadios1"> Saúde</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="28">
+                    <label class="form-check-label" for="raca"> Saúde</label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                    <label class="form-check-label" for="exampleRadios2">Roupas</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="29">
+                    <label class="form-check-label" for="raca">Roupas</label>
                 </div>
                 <div class="form-check espacamento">
-                    <input class="form-check-input" type="radio" name="raca" id="raca" value="opcao2">
-                    <label class="form-check-label" for="exampleRadios2">Outro</label>
+                    <input class="form-check-input" type="radio" name="raca" id="raca" value="30">
+                    <label class="form-check-label" for="raca">Outro</label>
                 </div>
             </div>
         </div>
@@ -243,10 +244,11 @@
         </div>
         <div>
                 <div class="form-container">
-                    <input type="text" v-model="anuncio.nome" class="anuncio-input" placeholder="Nome" />
+                    <input type="text" v-model="anuncio.descricao" class="anuncio-input" placeholder="Descrição" />
                 </div>
                 <div class="row">
                     <div class="col-md-6">
+                        <input type="text" v-model="anuncio.nome" class="anuncio-input info" placeholder="Nome" />
                         <input type="text" v-model="anuncio.quantidade" class="anuncio-input info" placeholder="Quantidade" />
                         <input type="text" v-model="anuncio.valor" class="anuncio-input info" placeholder="Valor unitário" />
                     </div>
@@ -261,14 +263,12 @@
                 <button type="button" class="btn btn-danger">
                     <!--<a href="/MeusProdutos"> -->
                         Cancelar
-   
                 </button>
             </div>
             <div class="col-3">
-                <button type="submit" class="btn btn-success">
-                    <a href="/SucessoAnuncio">
+                <button type="submit" class="btn btn-success" v-on:click="novoProduto">
+                    <!-- <a href="/SucessoAnuncio"> -->
                         Finalizar
-                    </a>
                 </button>
             </div>
         </div> 
@@ -283,6 +283,11 @@
 import Cabecalho from './../Components/Cabecalho.vue';
 import Footer from './../Components/Footer.vue';
 import router from '@/routes/router.js';
+import CriarProduto from '../../src/services/authentication/criarProduto';
+import ProdutoObjeto from '../../src/services/authentication/requests/produtoObjeto';
+
+
+let request = new ProdutoObjeto();
 //import Anuncio from './../services/anuncios/anuncios'
 
 
@@ -294,11 +299,14 @@ export default {
         return{
             anuncio:{
                 nome: '',
+                descricao: '',
                 quantidade: '',
                 tipo: '',
                 valor: '',
+                idUsuario: '',
+                img: '',
             },
-            previewImage:null
+            selectedFile:null
         }
     },
 
@@ -337,19 +345,52 @@ export default {
 
 
         uploadImage(e){
-            const image = e.target.files[0];
-            const reader = new FileReader();
+           this.selectedFile = e.target.files[0];
+            /*const reader = new FileReader();
             reader.readAsDataURL(image);
             reader.onload = e=>{
                 this.previewImage = e.target.result;
-                console.log(this.previewImage);
-            }
+                //console.log(this.previewImage);
+                //console.log(image);
+                this.anuncio.img = this.previewImage;
+                //console.log(this.anuncio.img);
+            }*/
+            const fd = new FormData();
+            fd.append('image', this.selectedFile,this.selectedFile.name);
+            console.log(fd);
+            var objectURL = window.URL.createObjectURL(this.selectedFile);
+            console.log(objectURL);
+            this.anuncio.img = fd;
         },
+        onUpload(){
+            
+        },
+        
         salvar(){
             alert(this.anuncio.nome)
 
             //Anuncio.salvar(this.anuncio).then(resposta =>{alert('Salvo com Sucesso') })
         },
+        novoProduto(){
+            //this.anuncio.tipo = $("input[name='raca]:checked]").val();
+            var intPreco = parseInt(this.anuncio.valor);
+            var intQt = parseInt(this.anuncio.quantidade);
+            var intTipo = parseInt(this.anuncio.tipo);
+
+            //request.idProduto = null;
+            request.nome = this.anuncio.nome;
+            request.descricao = this.anuncio.descricao;
+            request.preco = intPreco;
+            request.quantidade = intQt;
+            request.imagem = this.anuncio.img;
+            request.ativo = 1;
+            request.idUsuario = 1;
+            request.idCategoria = intTipo;
+            console.log('resquest: '+ request);
+
+            const novoProduto = new CriarProduto();
+            novoProduto.novoProduto(request);
+        }
 
         
     },

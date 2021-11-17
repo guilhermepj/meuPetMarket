@@ -8,6 +8,6 @@ export default {
         return http.post('api/anuncio',anuncio)
     },
     apagar:(anuncio) =>{
-        return http.delete('api/anuncio',{ data: anuncio})
+        return http.delete('/user/products/{id}',{ data: anuncio})
     }
 }
