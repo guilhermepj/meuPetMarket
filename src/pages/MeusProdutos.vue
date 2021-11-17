@@ -25,22 +25,30 @@
                 <div class="row fundoAnuncio">
                     <div class="col-md-3 listaimg" >
                         <img src="./../assets/login-dog.jpg" class="img-fluid"/>
+                        <!-- <img :src="this.imageRequest.getImage(anuncio.imagem)" class="img-fluid"/> -->
                     </div>
                     <div class="col-md-4">
                         <h4>{{anuncio.nome}}</h4>
                     </div>
                     <div class="col-md-2">
-                        <p> disponível:</p>
+                        <p> Quantidade:</p>
                         <p>Valor unitário:</p>
-                        <button type="button" class="btn btn-danger" @click="remover(anuncio)">
-                            Excluir Anuncio
+                        <button type="button" class="btn btn-danger" v-on:click="apagar(anuncio.idProduto)">
+                            Delete
                         </button>
                     </div>
+<<<<<<< HEAD
 
                     <div class="col-md-3">
                         <p>{{anuncio.quantidade}}</p>
                         <p>{{anuncio.valor}} </p>
                         <button type="button" class="btn btn-primary" @click="goToAnuncio()">
+=======
+                    <div class='col-md-2'>
+                        <p>{{anuncio.quantidade}} </p>
+                        <p>{{anuncio.preco}}</p>
+                        <button type="button" class="btn btn-primary">
+>>>>>>> ae3628d11c3eec56cec98a7446f79bbc2c720717
                             Ir para Anuncio
                         </button>
                     </div>
@@ -59,26 +67,47 @@ import Cabecalho from './../Components/Cabecalho.vue';
 import Footer from './../Components/Footer.vue';
 import router from '@/routes/router.js';
 import ProdutoService from '../services/produtoService';
+import CriarProduto from '../services/authentication/criarProduto';
+//import ProdutoObjeto from '../services/authentication/requests/produtoObjeto';
+//import ImageRequest from '../services/anuncios/imageRequest';
 
 const produtoService = new ProdutoService();
-            produtoService.getProduto()
+//const imageRequest = new ImageRequest();
+
+//let request = new ProdutoObjeto();
+
+export default {
+    name:'MeusProdutos',
+    router,
+
+    data(){
+        produtoService.getProduto()
             .then(response => {
                 // console.log(response.data);
                 let json = JSON.stringify(response.data);
                 let produto = JSON.parse(json);
-                // console.log(json)
+                // console.log(produto.products)
                 // console.log(response.data)
                 //console.log(produto.products)
                 // console.log(this.options)
-                
+
 
                 produto.products.forEach((value) => {
-                    console.log(JSON.parse(value))
                     console.log('aaaa')
-                    console.log(this.anuncios)
+                    // console.log(JSON.parse(value))
+                    // console.log(this.anuncios[0].nome)
+                    // console.log(this.options)
+
+
                     this.anuncios.push({
+                        idProduto: value.idProduto,
+                        nome: value.nome,
+                        descricao: value.descricao,
+                        preco: value.preco,
+                        quantidade: value.quantidade,
+                        imagem: value.imagem
                         })
-                    
+                    console.log("bvbbb")
                     //console.log(value.descricao)
                     //console.log(value.preco)
                     // console.log(index)
@@ -86,22 +115,14 @@ const produtoService = new ProdutoService();
                     
                 });
 
-                console.log(this.anuncios[0].nome)
+                // console.log(this.anuncios[0].nome)
                  
 
             }).catch((error) => {console.log(error);});
-
-export default {
-    name:'MeusProdutos',
-    router,
-
-    data(){
         return{
-            nome: '',
-            quantidade: '',
-            valor: '',
-            produto: [],
-            anuncios: [{nome: 'shampoo', quantidade: 20, valor: 50.00}]
+            //image: ImageRequest.getImage(),
+            anuncios: [{idProduto: 0, nome: 'shampoo', descricao: 'a', quantidade: 20, preco: 50.00, imagem: 'a'}]
+            
             //anuncios:[{nome: 'shampoo', quantidade: 20, valor: 50.00},{nome: 'casa dog', quantidade: 5, valor: 500.00},{nome: 'casa dog', quantidade: 5, valor: 500.00},{nome: 'casa dog', quantidade: 5, valor: 500.00}]
         }
     },
@@ -121,14 +142,21 @@ export default {
             console.log(resposta)
             this.anuncios = resposta.data
         })
-        /*remover(anuncio){
+        remover(anuncio){
             Anuncio.apagar(anuncio).then(resposta =>{
-                this.listar();
             }).catch(e =>{
-                
             })
         }*/
 
+    },
+
+    methods:{
+        apagar(idProduto){
+            const del = new CriarProduto();
+            del.delete(idProduto);
+            window.location.reload();
+            //console.log(idProduto);
+        }
     },
 
 

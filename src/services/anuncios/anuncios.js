@@ -2,12 +2,12 @@ import {http} from './../.services/api.js'
 
 export default {
     listar:() => {
-        return http.get('produtos')
+        return http.get('api/produtos')
     },
     salvar:(anuncio)=>{
-        return http.post('anuncio',anuncio)
+        return http.post('api/anuncio',anuncio)
     },
     apagar:(anuncio) =>{
-        return http.delete('anuncio',{ data: anuncio})
+        return http.delete('/user/products/{id}',{ data: anuncio})
     }
 }
