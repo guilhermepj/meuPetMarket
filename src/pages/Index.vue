@@ -19,13 +19,13 @@
             <div class="row">
 				<div class=" col-md-6 centralizar">
 					<h4>Buscar por animais</h4>
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/login-dog.jpg" alt="" class="imgBusca">
 					</a>
 				</div>
 				<div class=" col-md-6 centralizar">
 					<h4>Buscar por Produtos</h4>
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/login-dog.jpg" alt="" class="imgBusca">
 					</a>
 				</div>
@@ -35,44 +35,44 @@
             <h1>Anúncios</h1>   
             <div class="row espacamento">
 				<div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/cadastro-dog.jpg" class="produtos">
 				</a>
 				</div>
                 <div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/login-dog.jpg" class="produtos">
 				</a>
 				</div>
                 <div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/cadastro-dog.jpg" class="produtos">
 				</a>
 				</div>
                 <div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/login-dog.jpg" class="produtos">
 				</a>
 				</div>
 			</div>
             <div class="row">
 				<div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/login-dog.jpg" class="produtos">
 				</a>
 				</div>
                 <div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/cadastro-dog.jpg" class="produtos">
 				</a>
 				</div>
                 <div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/cadastro-dog.jpg" class="produtos">
 				</a>
 				</div>
                 <div class="col-md-3 centralizar" >
-					<a href="#">
+					<a href="/Anuncio">
 						<img src="./../assets/login-dog.jpg" class="produtos">
 				</a>
 				</div>

@@ -10,6 +10,8 @@ import Senha from '@/pages/Senha';
 import MeusProdutos from '@/pages/MeusProdutos';
 import NovosAnuncios from '@/pages/NovosAnuncios';
 import SucessoAnuncio from '@/pages/SucessoAnuncio';
+import Anuncio from '@/pages/Anuncio';
+import Carrinho from '@/pages/Carrinho';
 
 const routes = [
     {
@@ -39,6 +41,14 @@ const routes = [
     {
         path:'/SucessoAnuncio',
         component: SucessoAnuncio
+    },
+    {
+        path:'/Anuncio',
+        component: Anuncio
+    },
+    {
+        path:'/Carrinho',
+        component: Carrinho
     }
 ];
 

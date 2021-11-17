@@ -40,7 +40,7 @@
                     <div class="col-md-3">
                         <p>{{anuncio.quantidade}}</p>
                         <p>{{anuncio.valor}} </p>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary" @click="goToAnuncio()">
                             Ir para Anuncio
                         </button>
                     </div>
@@ -109,6 +109,11 @@ export default {
     components:{
         Cabecalho,
         Footer,
+    },
+    methods: {
+        goToAnuncio(){
+            router.push('/');
+        }
     },
 
     mounted(){

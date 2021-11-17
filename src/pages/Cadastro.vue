@@ -168,7 +168,7 @@ export default {
                     let state = JSON.parse(json);
                     // console.log(json)
                     // console.log(response.data)
-                    // console.log(state.states)
+                    console.log(state.states)
                     // console.log(this.options)
 
                     state.states.forEach((value, index) => {
